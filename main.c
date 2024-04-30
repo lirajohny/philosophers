@@ -6,39 +6,38 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:48:11 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 13:09:11 by jlira            ###   ########.fr       */
+/*   Updated: 2024/04/30 14:34:26 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philosophers.h"
 
+int	start_simulation(t_list *head, t_philosophers *data)
+{
+
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
-	if (ac == 4 || ac == 5)
+	if (ac == 5 || ac == 6)
 	{
 		t_philosophers	data;
-		t_number		status;
+		t_list			*head;	
 		struct	timeval	start;
-	
+
+		head = NULL;
 		gettimeofday(&start, NULL);
-		printf("start: %li\n", start.tv_sec);
 		data.start = start.tv_sec * 1000; // sec * 1000 = milisec
-		printf("data.start: %li\n", data.start);
 		data.how_many = ft_atoi(av[1]);
-		printf("data.how_many: %i\n", data.how_many);
 		data.forks = ft_atoi(av[1]);
-		printf("data.forks: %i\n", data.forks);
-		data.die = ft_atol(av[2]);
-		printf("data.die: %li\n", data.die);
 		data.eat = ft_atol(av[3]);
-		printf("data.eat: %li\n", data.eat);
 		data.sleep = ft_atol(av[4]);
-		printf("data.sleep: %li\n", data.sleep);
-		if (ac == 5)
+		if (ac == 6)
 			data.rounds = ft_atoi(av[5]);
 		// init list
-		list_init(&data, &status, data.how_many);
-
-
+		list_init(head, &data, data.how_many);
+		start_simulation(head, &data);
+;
 	}
 	else
 	{

@@ -6,32 +6,29 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:29:46 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 13:51:09 by jlira            ###   ########.fr       */
+/*   Updated: 2024/04/30 14:29:10 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philosophers.h"
 
-t_number	*ft_lstnew(int	i)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_number	*new_node;
+	t_list	*tmp;
+	int i = 0;
+	printf("here %i\n", i);
+	i++;
 
-	new_node = (t_number *)malloc(sizeof(t_number));
-	if (!new_node)
+	if (!lst)
 		return (NULL);
-	if (i == 0)
-		new_node->left = NULL;
-	else
-		new_node->right->left = new_node;
-	new_node->number = i + 1;
-	new_node->last_meal = 0;
-	new_node->left_fork  = 0;
-	new_node->right_fork  = 1;
-	new_node->eating = 0;
-	new_node->thinking = 0;
-	new_node->right = NULL;
-	return (new_node);
+	tmp = lst;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+		printf("here %i\n", i);
+		i++;
+	}
+	return (tmp);
 }
-
 
 t_list* create_node(t_list **head, int i)
 {
@@ -39,11 +36,12 @@ t_list* create_node(t_list **head, int i)
     t_list* last;
 
 	new_node = (t_list*)malloc(sizeof(t_list));
-	last = lst_last(head);
-	new_node->status.number = i + 1;
-	new_node->status.last_meal = 0;
-	new_node->status.left_fork  = 0;
-	if (last.status.right_fork == 1)
+	if (*head != NULL)
+		last = ft_lstlast(*head);
+	new_node->status.number = i + 1; // philosopher number
+	new_node->status.last_meal = 0; // time of last meal
+	new_node->status.left_fork  = 0; 
+	if (last != NULL && last->status.right_fork == 1)
 		new_node->status.left_fork  = 1;
 	new_node->status.right_fork  = 1;
 	new_node->status.eating = 0;
@@ -72,14 +70,15 @@ void insert_end(t_list** head, int i)
     }
 }
 
-void	list_init(t_philosophers *data, t_number *status, int ammount)
+void	list_init(t_list *head, t_philosophers *data, int ammount)
 {
 	int	i;
-	t_list	*head;
+
 	i = 0;
-	while (i < ammount)
+	while (i <= ammount)
 	{
 		insert_end(&head ,i);
 		i++;
 	}
+	head->status.left_fork = 1;
 }

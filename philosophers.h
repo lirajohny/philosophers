@@ -6,7 +6,7 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:48:06 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 13:38:37 by jlira            ###   ########.fr       */
+/*   Updated: 2024/04/30 14:00:12 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_list {
 // utils.c
 int		ft_atoi(const char *nptr);
 double	ft_atol(char *s);
-void	list_init(t_philosophers *data, t_number *status, int ammount);
+void	list_init(t_list *head, t_philosophers *data, int ammount);
 
 /*
   struct timeval {
