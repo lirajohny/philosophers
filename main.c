@@ -6,7 +6,7 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:48:11 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 14:34:26 by jlira            ###   ########.fr       */
+/*   Updated: 2024/04/30 14:39:08 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philosophers.h"
@@ -23,11 +23,10 @@ int	main(int ac, char **av)
 	{
 		t_philosophers	data;
 		t_list			*head;	
-		struct	timeval	start;
 
 		head = NULL;
-		gettimeofday(&start, NULL);
-		data.start = start.tv_sec * 1000; // sec * 1000 = milisec
+		gettimeofday(&data.time_start, NULL);
+		data.start = data.time_start.tv_sec * 1000; // sec * 1000 = milisec
 		data.how_many = ft_atoi(av[1]);
 		data.forks = ft_atoi(av[1]);
 		data.eat = ft_atol(av[3]);

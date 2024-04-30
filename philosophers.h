@@ -6,7 +6,7 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:48:06 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 14:00:12 by jlira            ###   ########.fr       */
+/*   Updated: 2024/04/30 14:38:48 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philosophers
 	long	sleep; // time_to_sleep : will speel X miliseconds
 	long	die; // time_to_die : he will die if do not eat in this period
 	long	eat; // time_to_eat : takes X miliseconds to eat
+	struct	timeval	time_start;
 } t_philosophers;
 
 typedef struct	s_number
