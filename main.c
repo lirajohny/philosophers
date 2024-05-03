@@ -6,13 +6,21 @@
 /*   By: jlira <jlira@student.42.rj>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:48:11 by jlira             #+#    #+#             */
-/*   Updated: 2024/04/30 14:39:08 by jlira            ###   ########.fr       */
+/*   Updated: 2024/05/03 14:40:49 by jlira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philosophers.h"
 
 int	start_simulation(t_list *head, t_philosophers *data)
 {
+	printf("simulation\n");
+	t_list *ptr = head;
+
+	while (ptr != NULL)
+	{
+		printf ("|| %i [p%i] %i ", ptr->status.left_fork, ptr->status.number, ptr->status.right_fork);
+		ptr = ptr->next;
+	}
 
 	return (0);
 }
@@ -34,9 +42,9 @@ int	main(int ac, char **av)
 		if (ac == 6)
 			data.rounds = ft_atoi(av[5]);
 		// init list
-		list_init(head, &data, data.how_many);
+		head = list_init(head, &data, data.how_many);
 		start_simulation(head, &data);
-;
+		free(head);
 	}
 	else
 	{
